@@ -2,6 +2,7 @@ package services
 
 import (
 	"context"
+	"fmt"
 	"os"
 
 	"github.com/sashabaranov/go-openai"
@@ -22,10 +23,11 @@ func ConvertTextToSpeech(text string) (string, error) {
 	}
 
 	audioFile := "output.mp3"
-	err = os.WriteFile(audioFile, resp.Choices[0].Text, 0644)
-	if err != nil {
-		return "", err
-	}
+	fmt.Println(resp)
+	// err = os.WriteFile(audioFile, resp.Choices[0].Text, 0644)
+	// if err != nil {
+	// 	return "", err
+	// }
 
 	return audioFile, nil
 }
